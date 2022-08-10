@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {IoIosAdd} from 'react-icons/io';
 
+
 const CreateNote = ({addNewNote}) => {
 
     const [isExpanded, setIsExpanded] = useState(false)

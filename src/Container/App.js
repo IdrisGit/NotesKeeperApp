@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { nanoid } from 'nanoid'
 import CreateNote from "../Components/CreateNote";
 import NotesList from "../Components/NotesList";
 
@@ -6,19 +7,35 @@ function App() {
 
   const[notes, setNotes] = useState([])
 
-  const addNewNote = (newNote) => {
+  const addNewNote = (note) => {
+    const newNote = {
+      id : nanoid(),
+      title: note.title,
+      content: note.content
+    }
     setNotes((prevNotes) => {return [...prevNotes, newNote]})
   }
 
   const deleteNote = (id) => {
-    const updatedNotes = notes.filter((note, index) => index !== id)
+    const updatedNotes = notes.filter((note) => note.id !== id)
     setNotes(updatedNotes)
+  }
+
+  const updateNote = (note) =>{
+    const updateNotes = notes.map((x) => {
+      if(note.id === x.id){
+        return({...x, note})
+      }
+      return note
+    })
+    setNotes(updateNotes)
+    console.log(updateNotes)
   }
 
   return (
     <div className="container">
         <CreateNote addNewNote ={addNewNote} />
-        <NotesList notes={notes} handleDeleteNote = {deleteNote} />
+        <NotesList notes={notes} handleDeleteNote = {deleteNote} updateNote = {updateNote} />
     </div>
   );
 };
