@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MdDeleteForever } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
 
 const Note = ({id, title, content, handleDeleteNote,updateNote}) => {
 
@@ -41,20 +41,19 @@ const Note = ({id, title, content, handleDeleteNote,updateNote}) => {
                     <h2 className='note-title'>{title}</h2>
                         <p className='note-content'>{content}</p>
                         <div className='note-footer'>
-                            <button onClick={canEdit}>Edit</button>
-                            <MdDeleteForever onClick={() => handleDeleteNote(id)}  className='delete-button' size='1.3em' />
+                            <button className='note-button-edit' onClick={canEdit}>Edit</button>
+                            <MdDelete onClick={() => handleDeleteNote(id)}  className='delete-button' size='1.6em' />
                         </div>
                 </div>
         }
 
         {
             isEdit &&
-            <div className="note">
+            <div className="note-edit">
                 <h2 className='note-title'>{title}</h2>
                 <textarea className='note-content-edit' value={note.content} name = 'content' onChange={handleChange} rows = '4'>{content}</textarea>
                     <div className='note-footer'>
-                     <button onClick={editNote}>Save</button>
-                    <MdDeleteForever onClick={() => handleDeleteNote(id)}  className='delete-button' size='1.3em' />
+                     <button className='note-button-save' onClick={editNote}>Save</button>
                 </div>
             </div>
         }

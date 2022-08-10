@@ -6,11 +6,6 @@ import NotesList from "../Components/NotesList";
 function App() {
 
   const[notes, setNotes] = useState([
-    {
-      id: "",
-      title: "",
-      content: ""
-    }
   ])
 
   const addNewNote = (note) => {
