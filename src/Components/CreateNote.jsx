@@ -1,13 +1,11 @@
 import { useState } from "react";
-import {IoIosAdd} from 'react-icons/io'
-import { nanoid } from 'nanoid'
+import {IoIosAdd} from 'react-icons/io';
 
 const CreateNote = ({addNewNote}) => {
 
     const [isExpanded, setIsExpanded] = useState(false)
 
     const[note, setNote] = useState({
-        id: nanoid(),
         title: "",
         content:""
     })
@@ -28,7 +26,6 @@ const CreateNote = ({addNewNote}) => {
                 title: '',
                 content: ''
             })
-
             setIsExpanded(false)
         }
     }
@@ -62,7 +59,7 @@ const CreateNote = ({addNewNote}) => {
                     </textarea>
                 </p>
                 <button className="add-button" onClick={handleSubmit}>
-                    <IoIosAdd size={35} />
+                    <IoIosAdd size='35' />
                 </button>
         </div>
     )

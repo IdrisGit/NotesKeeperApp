@@ -1,15 +1,16 @@
 import Note from "./Note"
 
-const NotesList = ({notes}) => {
+const NotesList = ({notes, handleDeleteNote}) => {
     return(
         <div className="notes-list">
             {
-                notes.map((note) =>
+                notes.map((note, index) =>
                 <Note
-                    key = {note.id}
-                    id = {note.id}
+                    key = {index}
+                    id = {index}
                     title = {note.title}
                     content = {note.content}
+                    handleDeleteNote = {handleDeleteNote}
                 />
                 )
             }

@@ -10,10 +10,15 @@ function App() {
     setNotes((prevNotes) => {return [...prevNotes, newNote]})
   }
 
+  const deleteNote = (id) => {
+    const updatedNotes = notes.filter((note, index) => index !== id)
+    setNotes(updatedNotes)
+  }
+
   return (
     <div className="container">
         <CreateNote addNewNote ={addNewNote} />
-        <NotesList notes={notes} />
+        <NotesList notes={notes} handleDeleteNote = {deleteNote} />
     </div>
   );
 };
