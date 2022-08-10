@@ -5,7 +5,13 @@ import NotesList from "../Components/NotesList";
 
 function App() {
 
-  const[notes, setNotes] = useState([])
+  const[notes, setNotes] = useState([
+    {
+      id: "",
+      title: "",
+      content: ""
+    }
+  ])
 
   const addNewNote = (note) => {
     const newNote = {
@@ -22,14 +28,13 @@ function App() {
   }
 
   const updateNote = (note) =>{
-    const updateNotes = notes.map((x) => {
-      if(note.id === x.id){
-        return({...x, note})
-      }
-      return note
-    })
-    setNotes(updateNotes)
-    console.log(updateNotes)
+   const updateNotes = notes.map((x) => {
+    if(note.id === x.id){
+      return ({...x, content:note.content})
+    }
+    return x
+   })
+   setNotes(updateNotes)
   }
 
   return (
