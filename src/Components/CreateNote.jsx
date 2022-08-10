@@ -4,6 +4,8 @@ import { nanoid } from 'nanoid'
 
 const CreateNote = ({addNewNote}) => {
 
+    const [isExpanded, setIsExpanded] = useState(false)
+
     const[note, setNote] = useState({
         id: nanoid(),
         title: "",
@@ -26,11 +28,18 @@ const CreateNote = ({addNewNote}) => {
                 title: '',
                 content: ''
             })
+
+            setIsExpanded(false)
         }
+    }
+
+    const handleExpand = () => {
+        setIsExpanded(true)
     }
 
     return(
         <div className="create-note">
+            {isExpanded &&
                 <input
                 className="title"
                 value={note.title}
@@ -39,13 +48,16 @@ const CreateNote = ({addNewNote}) => {
                 name="title"
                 onChange={handleChange}
                 />
+            }
                 <p>
                     <textarea
                     className="content"
                     value={note.content}
                     name="content"
                     placeholder="Take a note..."
+                    onClick={handleExpand}
                     onChange={handleChange}
+                    rows = {isExpanded ? 3 : 1}
                     >   
                     </textarea>
                 </p>

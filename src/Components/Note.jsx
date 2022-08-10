@@ -1,4 +1,3 @@
-
 import { MdDeleteForever } from 'react-icons/md';
 
 const Note = ({id, title, content}) => {
@@ -8,7 +7,7 @@ const Note = ({id, title, content}) => {
                 <p className='note-content'>{content}</p>
                 <div className='note-footer'>
                     <button>Edit</button>
-                    <MdDeleteForever className='delete-button'  size={25} />
+                    <MdDeleteForever className='delete-button' size={25} />
                 </div>
         </div>
     )
