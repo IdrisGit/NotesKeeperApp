@@ -154,3 +154,20 @@ justify-content: right;
   cursor: pointer;
   outline: none;
 }
+
+.pagination {
+  clear:both;
+  position:relative;
+  font-size: 1rem;
+  text-align:center;
+  padding: 10px;
+}
+
+.pagination a {
+  display:inline-block;
+  margin: 2px 2px 2px 0;
+  padding:6px 9px 5px 9px;
+  text-decoration:none;
+  color: #ddd;
+  background: rgb(82, 76, 75);
+}

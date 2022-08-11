@@ -2,11 +2,13 @@ import { useState } from "react";
 import { nanoid } from 'nanoid'
 import CreateNote from "../Components/CreateNote";
 import NotesList from "../Components/NotesList";
+import Pagination from "../Components/Pagination";
 
 function App() {
 
-  const[notes, setNotes] = useState([
-  ])
+  const[notes, setNotes] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const [notesPerPage] = useState(6)
 
   const addNewNote = (note) => {
     const newNote = {
@@ -32,10 +34,20 @@ function App() {
    setNotes(updateNotes)
   }
 
+  //Get Current Notes
+  const indexLastNote = currentPage * notesPerPage
+  const indexFirstNote = indexLastNote - notesPerPage
+  const currentNotes = notes.slice(indexFirstNote, indexLastNote)
+
+  const paginate = (pgNo) => {
+    setCurrentPage(pgNo)
+  }
+
   return (
     <div className="container">
         <CreateNote addNewNote ={addNewNote} />
-        <NotesList notes={notes} handleDeleteNote = {deleteNote} updateNote = {updateNote} />
+        <NotesList notes={currentNotes} handleDeleteNote = {deleteNote} updateNote = {updateNote} />
+        <Pagination notesPerPage={notesPerPage} totalNotes = {notes.length} paginate = {paginate} currentPage = {currentPage} />
     </div>
   );
 };
